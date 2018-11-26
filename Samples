@@ -1,0 +1,288 @@
+   """
+    (String) -> String
+    Function prints input file contents.
+    >>> check_file('week9.txt')
+    Visit
+    www.lgbtgreeklife.org
+    to
+    ... 
+    """
+
+def check_file(fname):
+    """
+    (String) -> String
+    Function prints input file contents.
+    >>> check_file('week9.txt')
+    Visit
+    www.lgbtgreeklife.org
+    to
+    ... 
+    """
+    myf = open(fname, 'r')
+    file = myf.read()
+    print (file, end="")
+    return None
+    
+   import cis122project6_2 as check
+
+""" (0) """
+
+def frequent(psw):
+    
+    """
+    String -> Boolean
+    Function tests if a password
+    matches a password in a list
+    >>> frequent('12345')
+    False
+    """
+    
+    freq_pass = (['password', '12345', 'qwerty', 'letmein', 'trustno1','000000',	
+'passw0rd'])
+    if psw in freq_pass:
+        return False
+    else:
+        return True
+    
+""" 1a Password portection """
+
+def passwordChecker(psw):
+
+    """
+    (string) -> string/ boolean
+    
+    Function checks a strings complexity.
+    
+    >>> passwordChecker('000000')
+    False
+    >>> passwordChecker('#Qwerty')
+    False
+    >>> passwordChecker('#qwErty')
+    False
+    >>> passwordChecker('#Qw9rty')
+    False
+    >>> passwordChecker('#Qw99rty')
+    True
+    >>> passwordChecker('12345')
+    False
+    >>> passwordChecker('A99!')
+    False
+    >>> passwordChecker('Abyz9!')
+    False
+    >>> passwordChecker('qwerty99!')
+    False
+    # checks a blank srting.
+    >>> passwordChecker()
+    False
+    # checks a list or passwords 
+    >>> passwordChecker((['password', '12345', 'qwerty', 'letmein', 'trustno1','000000',	
+    'passw0rd']))
+    False
+    """
+    
+    if not check.checklen(psw,5):
+        print("Password length must be 5 char long.")
+        return False
+    elif not check.is_uc_alpha(psw):
+        print ("Password length must contain a uppercase char.")
+        return False
+    elif not check.is_2numbers(psw):
+        print("Passwords must contain at least two numbers.")
+        return False
+    elif not check.is_noEe(psw):
+        print("Passwords may not contain the characters	'E' or 'e'.")
+        return False
+    elif not check.is_nonalum(psw):
+        print("Passwords must include at least one non-alphanumeric character")
+        return False
+    elif frequent(psw):
+        print("A password may not be a frequently used password")
+        return False
+    else:
+        return True 
+def diff_first_last(L):
+
+    '''(list) -> boolean
+    Precondition: len(L) >= 2
+    Returns True if the first item of the list is
+    different from the last; else returns False.
+    >>> diff_first_last([3, 4, 2, 8, 3])
+    False
+    >>> diff_first_last(['apple', 'banana', 'pear'])
+    True
+    >>> diff_first_last([4.0, 4.5])
+    True
+    '''
+    
+    if L[0] == L[-1]:
+       print('False') 
+    elif L[0] != L[-1]:
+       print('True')
+    else:
+        print('False')
+        
+""" (0 B) """
+
+def diff_first_last(L):
+
+    '''(list) -> boolean
+    Precondition: len(L) >= 2
+    Returns True if the first item of the list is
+    different from the last; else returns False.
+    >>> diff_first_last([3, 4, 2, 8, 3])
+    False
+    >>> diff_first_last(['apple', 'banana', 'pear'])
+    True
+    >>> diff_first_last([4.0, 4.5])
+    True
+    #tests for words that are the same but capitalized
+    >>> diff_first_last(['Apple', 'banana', 'apple'])
+    True
+    #tests if special chars throw off the program 
+    >>> diff_first_last(['Apple!', 'banana', 'Apple'])
+    True '''
+    
+    if L[0] == L[-1]:
+       print('False') 
+    elif L[0] != L[-1]:
+       print('True')
+    else:
+        print('False')
+        
+""" (1 A) """
+
+def middle(L):
+
+    '''(list) -> num
+    Returns 999999 if the list has no middle
+    if the list has a middle item it returns
+    that object
+    >>> middle([3, 4, 2, 8, 3])
+    2
+    >>> middle([3, 4, 2, 8])
+    999999 '''
+    
+    if len(L) % 2 == 0:
+        return 999999
+    else:
+        return (L[len(L) // 2])
+    
+""" (1 B) """
+
+    """#simple
+    >>> middle(2)
+    2
+    #borderline
+    >>> middle([3, 4])
+    999999
+    #normal
+    >>> middle([3, 4, 2, 8, 3])
+    2
+    """
+
+""" (2) """
+
+def mySum(L):
+    
+    '''(list) -> num
+    Returns the sum of all numbers in the list.
+    >>> middle([3, 4])
+    7
+     '''
+    total = 0
+    for num in L:
+        total += num
+    return total
+
+import random 
+def game():
+    '''() -> str
+    This function asks the user intialy whether or not
+    they would like to play and feeds to main rps function.
+    For example:
+    >>> game()
+    Would you like to play Rock Paper Scissors?: Enter y or n:
+    N'''
+    print('')
+    response = input("Would you like to play Rock Paper Scissors?: Enter y or n: ")
+    return response
+
+def replay():
+     '''() -> str
+    This function asks the user wether or
+    nor they would like to replay the game or returns goobye if no. 
+    For example:
+    >>> replay()
+    >>> Would you like to restart the game? Enter y or n:
+    >>> return none'''
+    replay = input('Would you like to restart the game? Enter y or n: ')
+    if replay == 'y':
+        return rps()
+    elif replay == 'n':
+        print('Goodbye')
+   
+
+def rps():
+     '''() -> str
+    This function is the main function and
+    calls both fucntions to complete the RPS game . 
+    For example:
+    >>> rps()
+    >>> Would you like to play the game? Enter y or n:
+    >>> Y
+    >>> Would you like to play Rock Paper Scissors?: Enter y or n: y
+    >>> Side 1 is R and Side 2 is R.
+    >>> The winner is Tie!'''
+    response1 = game()
+    if response1 or replay1 == 'y':
+        winner = ''
+        while winner == '' :
+            s1 = random.choice('RPS')
+            s2 = random.choice('RPS')
+            if s1 == s2:
+                winner = 'Tie'
+            elif (s1 == 'R') and (s2 == 'P'):
+                winner = 'Side 2'
+            elif (s1 == 'R') and (s2 == 'S'):
+                winner = 'Side 1'	
+            elif (s1 == 'P') and (s2 == 'R'):
+                winner = 'Side 1'
+            else:
+                winner = 'bug'
+        print('Side 1 is {} and Side 2 is {}.'.format(s1,s2))				
+        print('The winner is {}!'.format(winner))
+        print('')
+        replay1 = replay()
+        return replay()
+
+def checklen(string,le):
+    """
+    (str, int) -> boolean
+    Function returns true if input string
+    is at least le long and false other wise
+    >>> checklen('hello',5)
+    True
+    >>> checklen('hello',7)
+    False
+    """
+    x = len(string)
+    lel = int(le)
+    if x >= le:
+        return True
+    else:
+        return False
+    
+""" [0B] """
+
+def is_nonalnum(astring):
+    """
+    (str) -> boolean
+    Function returns true if string contatins a
+    non alpha numeric number and false otherwise.
+    >>> is_nonalnum("lexi!")
+    True
+    >>> is_nonalnum('lexi')
+    False
+    """
+    if astring.isalnum() is False:
+        
